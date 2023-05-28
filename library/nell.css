@@ -1,0 +1,51 @@
+li {
+  list-style-type: none;
+  float: left;
+  margin-right: 30px;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.search {
+  width: 100%;
+}
+.boxx {
+  background-color: rgb(226, 226, 226);
+  width: 100%;
+  height: 200px;
+}
+
+.sk {
+  display: flex;
+  justify-content: space-evenly;
+}
+.sleep {
+  width: 500px;
+  display: flex;
+
+  justify-content: space-evenly;
+}
+.ifnt {
+  display: flex;
+  justify-content: space-evenly;
+}
+.plus {
+  float: right;
+  width: 15px;
+  height: 15px;
+}
+
+p:hover {
+  color: rgb(138, 12, 12);
+}
+
+.ifnt {
+  align-content: center;
+}
+
+k:hover {
+  background-image: url(./pic/main-q1-over.png);
+}

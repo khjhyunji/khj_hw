@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #modal_btn {
+        border-radius: 10px;
+        width: 100px;
+        text-align: center;
+        background-color: pink;
+        cursor: pointer;
+      }
+      .modal_wrap {
+        border: 1px solid #aaa;
+        box-shadow: 0 0 5px #aaa;
+        border-radius: 20px;
+        width: 500px;
+        height: 300px;
+        /*모달창 가운데 배치*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -150px 0 0 -250px;
+        display: none;
+        z-index: 2;
+        background-color: #fff;
+      }
+      .modal_wrap.show-modal {
+        display: block;
+      }
+      .modal_background.show-modal {
+        display: block;
+      }
+      .modal_background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: none;
+      }
+      .modal_close {
+        position: absolute;
+        width: 100%;
+        top: 5px;
+        box-sizing: border-box;
+        padding: 10px 30px;
+        display: flex;
+        justify-content: end;
+        border-bottom: 1px solid #aaa;
+        cursor: pointer;
+      }
+      .text {
+        position: absolute;
+        top: 80px;
+        left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>모달창 이벤트 연습하기</h1>
+    <div id="modal_btn">모달창 버튼</div>
+    <div class="modal_background"></div>
+    <div class="modal_wrap">
+      <div class="modal_close">X</div>
+      <div class="text">우와아앙 모달창이다!</div>
+      <script>
+        const modal_wrap = document.querySelector(".modal_wrap");
+        const modal_background = document.querySelector(".modal_background");
+
+        //모달 창 보여주는 이벤트 리스너
+        document.querySelector("#modal_btn").addEventListener("click", () => {
+          open();
+        });
+        // 닫기 눌러서 모달창 지우는 이벤트 리스너
+        document.querySelector(".modal_close").addEventListener("click", () => {
+          close();
+        });
+        //모달창 바깥부분 눌러서 창 닫는 이벤트 리스너
+        window.addEventListener("click", (e) => {
+          e.target === modal_background ? close() : false;
+        });
+
+        function close() {
+          modal_wrap.classList.remove("show-modal");
+          modal_background.classList.remove("show-modal");
+        }
+
+        function open() {
+          modal_wrap.classList.add("show-modal");
+          modal_background.classList.add("show-modal");
+        }
+      </script>
+    </div>
+  </body>
+</html>

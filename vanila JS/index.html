@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 100px;
+                height: 30px;
+                background-color: grey;
+                text-align: center;
+                margin: 30px;
+            }
+            p {
+                margin: 30px;
+            }
+            section {
+                border: 2px solid skyblue;
+                width: 40%;
+                height: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div>오픈 시간</div>
+            <p>2023년 6월 12일 00시 00분 00초</p>
+            <div>카운트 다운</div>
+            <p class="timeout"></p>
+        </section>
+        <script>
+            var timeout = document.querySelector(".timeout");
+
+            var dDay = new Date("2023-06-12T00:00");
+            var oDate = new Date();
+
+            function update() {
+                var interval = dDay.getTime() - oDate.getTime();
+                var days = Math.floor(interval / (1000 * 60 * 60 * 24));
+                var hours = Math.floor(
+                    (interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                var minutes = Math.floor(
+                    (interval % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                var seconds = Math.floor((interval % (1000 * 60)) / 1000);
+                timeout.textContent =
+                    days +
+                    "일 " +
+                    hours +
+                    "시간 " +
+                    minutes +
+                    "분 " +
+                    seconds +
+                    "초";
+            }
+            update();
+            var count = setInterval(update, 1000);
+        </script>
+    </body>
+</html>
